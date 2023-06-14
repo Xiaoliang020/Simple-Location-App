@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './App.css';
 
 const Location = () => {
     const [latitude, setLatitude] = useState(null);
@@ -7,8 +8,8 @@ const Location = () => {
     useEffect(() => {
       // Check if the browser supports geolocation
       if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(onSuccess, onError, { enableHighAccuracy: true });
-        // navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        // navigator.geolocation.getCurrentPosition(onSuccess, onError, { enableHighAccuracy: true });
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
       } else {
         console.log("Geolocation is not supported by this browser.");
       }
@@ -24,8 +25,6 @@ const Location = () => {
   
       console.log("Latitude: " + lat);
       console.log("Longitude: " + lng);
-  
-      // You can perform further actions with the obtained location data
     };
   
     // Error callback function
@@ -38,12 +37,11 @@ const Location = () => {
       <div>
         <h1>Location Information</h1>
 
-        {latitude && longitude && (
         <div>
           <p>Latitude: {latitude}</p>
           <p>Longitude: {longitude}</p>
         </div>
-        )}
+
       </div>
     );
   };
